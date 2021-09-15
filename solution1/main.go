@@ -6,13 +6,14 @@ import (
 	"time"
 )
 
-const PHILOSOPHER_COUNT = 5
+const PHILOSOPHER_COUNT = 100
 const ITERATIONS = 10
 
 var forkMutexes [PHILOSOPHER_COUNT]sync.Mutex
 var grabbingMutex sync.Mutex
 
 func main() {
+	println("solution 1")
 	startTime := time.Now()
 
 	var waitGroup sync.WaitGroup

@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-const PHILOSOPHER_COUNT = 5
+const PHILOSOPHER_COUNT = 100
 const ITERATIONS = 10
 
 var cleanForks [PHILOSOPHER_COUNT]bool
@@ -16,6 +16,7 @@ var wantsFork [PHILOSOPHER_COUNT]bool
 var isEating [PHILOSOPHER_COUNT]bool
 
 func main() {
+	println("solution 2")
 	startTime := time.Now()
 
 	var waitGroup sync.WaitGroup
@@ -113,16 +114,6 @@ func leftForkId(philId int) int {
 func rightForkId(philId int) int {
 	return philId
 }
-
-// func processForkRequests(philId int) {
-// 	if forkOwners[leftForkId(philId)] == philId {
-// 		forkChannels[philId]
-// 	}
-
-// 	if forkOwners[rightForkId(philId)] == philId {
-
-// 	}
-// }
 
 // Get the id of the philosopher that has precedence
 // over a given fork

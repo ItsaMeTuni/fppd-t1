@@ -1,4 +1,4 @@
-package main1
+package main
 
 import (
 	"fmt"
@@ -26,9 +26,9 @@ func runPhisolopher(id int) {
 }
 
 func eat() {
-	time.Sleep(time.Millisecond * 10)
+	time.Sleep(time.Millisecond * 100)
 }
 
 func think() {
-	time.Sleep(time.Millisecond * 20)
+	time.Sleep(time.Millisecond * 200)
 }
