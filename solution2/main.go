@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-const PHILOSOPHER_COUNT = 100
+const PHILOSOPHER_COUNT = 5
 const ITERATIONS = 10
 
 var cleanForks [PHILOSOPHER_COUNT]bool
@@ -21,9 +21,26 @@ func main() {
 
 	var waitGroup sync.WaitGroup
 
-	for philId := 0; philId < PHILOSOPHER_COUNT; philId++ {
+	for i := 0; i < PHILOSOPHER_COUNT; i++ {
 		waitGroup.Add(1)
-		forkChannels[philId] = make(chan bool)
+		forkChannels[i] = make(chan bool)
+
+		// Setup fork owners in a way that prevents a
+		// precedence cycle.
+		forkOwners[i] = i
+		if i == PHILOSOPHER_COUNT-1 {
+			// Setting the last fork's owner to
+			// the first philosopher breaks the cycle
+			// that would form if we assigned a fork to
+			// each philosopher.
+			// There are many ways to break this cycle,
+			// I just did it this way because it seemed the
+			// simplest way to do it.
+			forkOwners[i] = 0
+		}
+	}
+
+	for philId := 0; philId < PHILOSOPHER_COUNT; philId++ {
 		go runPhisolopher(philId, &waitGroup)
 		go runForkMonitor(philId)
 	}

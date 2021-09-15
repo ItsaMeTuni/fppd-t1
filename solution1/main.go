@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-const PHILOSOPHER_COUNT = 100
+const PHILOSOPHER_COUNT = 5
 const ITERATIONS = 10
 
 var forkMutexes [PHILOSOPHER_COUNT]sync.Mutex
