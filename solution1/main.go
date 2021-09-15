@@ -64,11 +64,11 @@ func runPhisolopher(philId int, waitGroup *sync.WaitGroup) {
 }
 
 func eat() {
-	time.Sleep(time.Millisecond * 10)
+	time.Sleep(time.Millisecond * 100)
 }
 
 func think() {
-	time.Sleep(time.Millisecond * 20)
+	time.Sleep(time.Millisecond * 200)
 }
 
 func leftForkId(philId int) int {
